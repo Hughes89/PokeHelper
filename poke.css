@@ -1,0 +1,32 @@
+body {
+  background-color: #9B1D20;
+  color: #635D5C;
+  font-family: sans-serif;
+}
+
+h2 {
+  color: #3D2B3D;
+}
+
+h1 {
+  text-transform: uppercase;
+  display: inline;
+  color: #CBEFB6;
+}
+
+.title {
+  font-size: 25px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #CBEFB6;
+
+}
+
+.howMany {
+  text-align: center;
+  align-self: center;
+  background-color: #CBEFB6;
+  border-width: thin;
+  border-color: #9BC1BC;
+  border-style: solid;;
+}
