@@ -1,0 +1,44 @@
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="poke.css">
+  <title>Poke Helper</title>
+</head>
+
+<body>
+
+<script src="poke.js"></script>
+  <script>
+  $( document ).ready(function() {
+    //Build Frame
+    $('body').html('');
+    $('body').append('<div class=container></div>');
+    $('.container').append('<div class=title><h1>P</h1> o k e m o n&nbsp;&nbsp;&nbsp;&nbsp;<h1>H</h1> e l p e r</div>')
+    $('.container').append('<div class=howMany><h2>How many do you need to catch?<h2></div>');
+    $('.howMany').append('<div class=howManyInputs></div>');
+
+    //How Many Inputs
+    $('.howManyInputs').append('Candy goal: <input class="howGoal" type="number" placeholder="0">  Current candy count:  <input class="howCandy" type="number" placeholder="0" > <br> Transfer as you catch? <input class="howTransfer" type="checkbox"> <br> <input type="submit" class="howSubmit">')
+    $('.howSubmit').on('click', function () {
+       if ($('.howCandy').val() === '' || $('.howGoal').val() === '' ) {
+         $('.howManyResult').html('<p>Inputs must contain numbers.</p>')
+    } else {
+      if ($('.howTransfer').is(':checked')) {
+        console.log('checked')
+      howMany($('.howCandy').val(), $('.howGoal').val(), true)
+      } else {
+      howMany($('.howCandy').val(), $('.howGoal').val(), false)
+    }
+      return false
+    }
+    })
+  //Results
+    $('.howManyInputs').append('<div class=howManyResult></div>')
+    //$('.howManyResult').append('<p>Results Here</p>')
+
+
+
+      })
+  </script>
+</body>
+</html>
