@@ -14,15 +14,38 @@
     //Build Frame
     $('body').html('');
     $('body').append('<div class=container></div>');
-    $('.container').append('<div class=title><h1>P</h1> o k e m o n&nbsp;&nbsp;&nbsp;&nbsp;<h1>H</h1> e l p e r</div>')
-    $('.container').append('<div class=howMany><h2>How many do you need to catch?<h2></div>');
-    $('.howMany').append('<div class=howManyInputs></div>');
+    $('.container').append('<div class=title><p><h1>P</h1> o k e m o n&nbsp;&nbsp;&nbsp;&nbsp;<h1>H</h1> e l p e r</p></div>');
+    //Evolve Cal div start
+    $('.container').append('<div class=evolveCalc><span class=titles><p><hr /><h2>E</h2> v o l u t i o n&nbsp;&nbsp;&nbsp;&nbsp;X P&nbsp;&nbsp;&nbsp;&nbsp;C a l c u l a t o r</p></span></div>');
+    //Evolve calc inputs
+    $('.evolveCalc').append('<div evolveInput>Pokemon Count: <input class="evolvePoke" type="number" placeholder="0"> Candy Count:  <input class="evolveCandy" type="number" placeholder="0" ><br />How many candy per evolve: <input class="evolveNum" type="number" placeholder="0" /> <br> Transfer as you catch? <input class="evoTransfer" type="checkbox"> Lucky Egg? <input class="luckyEgg" type="checkbox" /> <br> <input type="submit" class="evolveSubmit"></div>')
+    $('.evolveSubmit').on('click', function () {
+      var evolvePokemon = parseFloat($('.evolvePoke').val());
+      var evolveCandies = parseFloat($('.evolveCandy').val());
+      var evolveBy = parseFloat($('.evolveNum').val());
+      if ($('.evolvePoke').val() === '' || $('.evolveCandy').val() === '' || $('.evolveNum').val() === '') {
+        $('.calcResults').html('<p>Inputs must contain numbers.<hr /></p>')
+      } else {
+        if ($('.evoTransfer').is(':checked') && $('.luckyEgg').is(':checked')) {
+          pokeCalc(evolvePokemon, evolveCandies, evolveBy, true, true);
+      } else if ($('.evoTransfer').is(':checked') === true && $('.luckyEgg').is(':checked') === false) {
+          pokeCalc(evolvePokemon, evolveCandies, evolveBy, true, false);
+      } else if ($('.evoTransfer').is(':checked') === false && $('.luckyEgg').is(':checked') === true) {
+        pokeCalc(evolvePokemon, evolveCandies, evolveBy, false, true)
+      }
+    }
+    })
+    $('.evolveCalc').append('<div class=calcResults><hr /></div>')
 
+
+    //How Many div start
+    $('.container').append('<div class=howMany><span class=titles><p><h2>H</h2> o w&nbsp;&nbsp;&nbsp;&nbsp;m a n y&nbsp;&nbsp;&nbsp;&nbsp;d o&nbsp;&nbsp;&nbsp;&nbsp;y o u&nbsp;&nbsp;&nbsp;&nbsp;n e e d&nbsp;&nbsp;&nbsp;&nbsp;t o&nbsp;&nbsp;&nbsp;&nbsp;c a t c h ?<h2></span></p></div>');
+    $('.howMany').append('<div class=howManyInputs></div>');
     //How Many Inputs
     $('.howManyInputs').append('Candy goal: <input class="howGoal" type="number" placeholder="0">  Current candy count:  <input class="howCandy" type="number" placeholder="0" > <br> Transfer as you catch? <input class="howTransfer" type="checkbox"> <br> <input type="submit" class="howSubmit">')
     $('.howSubmit').on('click', function () {
        if ($('.howCandy').val() === '' || $('.howGoal').val() === '' ) {
-         $('.howManyResult').html('<p>Inputs must contain numbers.</p>')
+         $('.howManyResult').html('<p>Inputs must contain numbers.</p><hr />')
     } else {
       if ($('.howTransfer').is(':checked')) {
         console.log('checked')
@@ -34,7 +57,7 @@
     }
     })
   //Results
-    $('.howManyInputs').append('<div class=howManyResult></div>')
+    $('.howManyInputs').append('<div class=howManyResult><p><hr></p></div>')
     //$('.howManyResult').append('<p>Results Here</p>')
 
 
