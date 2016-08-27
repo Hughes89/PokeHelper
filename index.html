@@ -30,13 +30,13 @@
         $('.calcResults').html('<p>Inputs must contain numbers.<hr /></p>')
       } else {
         if ($('.evoTransfer').is(':checked') && $('.luckyEgg').is(':checked')) {
-          pidgeyCalc(evolvePokemon, evolveCandies, evolveNum, true);
+          pidgeyCalc(evolvePokemon, evolveCandies, evolveNum, true, true);
       } else if ($('.evoTransfer').is(':checked') === true && $('.luckyEgg').is(':checked') === false) {
-          pidgeyCalc(evolvePokemon, evolveCandies, evolveNum, false);
+          pidgeyCalc(evolvePokemon, evolveCandies, evolveNum, false, true);
       } else if ($('.evoTransfer').is(':checked') === false && $('.luckyEgg').is(':checked') === true) {
-         $('.calcResults').html('<p>Sorry still working on this feature!</p><hr />')
+          pidgeyCalc(evolvePokemon, evolveCandies, evolveNum, true, false);
       } else if ($('.evoTransfer').is(':checked') === false && $('.luckyEgg').is(':checked') === false) {
-         $('.calcResults').html('<p>Sorry still working on this feature!</p><hr />')
+          pidgeyCalc(evolvePokemon, evolveCandies, evolveNum, false, false);
       }
     }
     return false;
