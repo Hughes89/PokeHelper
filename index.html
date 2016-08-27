@@ -15,25 +15,31 @@
     $('body').html('');
     $('body').append('<div class=container></div>');
     $('.container').append('<div class=title><p><h1>P</h1> o k e m o n&nbsp;&nbsp;&nbsp;&nbsp;<h1>H</h1> e l p e r</p></div>');
+
+
     //Evolve Cal div start
     $('.container').append('<div class=evolveCalc><span class=titles><p><hr /><h2>E</h2> v o l u t i o n&nbsp;&nbsp;&nbsp;&nbsp;X P&nbsp;&nbsp;&nbsp;&nbsp;C a l c u l a t o r</p></span></div>');
     //Evolve calc inputs
-    $('.evolveCalc').append('<div evolveInput>Pokemon Count: <input class="evolvePoke" type="number" placeholder="0"> Candy Count:  <input class="evolveCandy" type="number" placeholder="0" ><br />How many candy per evolve: <input class="evolveNum" type="number" placeholder="0" /> <br> Transfer as you catch? <input class="evoTransfer" type="checkbox"> Lucky Egg? <input class="luckyEgg" type="checkbox" /> <br> <input type="submit" class="evolveSubmit"></div>')
+    $('.evolveCalc').append('<div evolveInput>Pokemon Count: <input class="evolvePoke" type="number" placeholder="0"> Candy Count:  <input class="evolveCandy" type="number" placeholder="0" ><br />How many candy per evolve:&nbsp;&nbsp;&nbsp;<input name="evolveNum" type="radio" value="12">12&nbsp;&nbsp;&nbsp;</input><input name="evolveNum" type="radio" value="25">25&nbsp;&nbsp;&nbsp;</input><input name="evolveNum" type="radio" value="50">50&nbsp;&nbsp;&nbsp;</input><input name="evolveNum" type="radio" value="100">100</input><br> Transfer as you catch? <input class="evoTransfer" type="checkbox"> Lucky Egg? <input class="luckyEgg" type="checkbox" /> <br> <input type="submit" class="evolveSubmit"></div>')
     $('.evolveSubmit').on('click', function () {
       var evolvePokemon = parseFloat($('.evolvePoke').val());
       var evolveCandies = parseFloat($('.evolveCandy').val());
-      var evolveBy = parseFloat($('.evolveNum').val());
-      if ($('.evolvePoke').val() === '' || $('.evolveCandy').val() === '' || $('.evolveNum').val() === '') {
+      var evolveNum = parseFloat($('input:radio[name=evolveNum]:checked').val())
+      console.log(evolveNum, evolvePokemon, evolveCandies)
+      if ($('.evolvePoke').val() === '' || $('.evolveCandy').val() === '') {
         $('.calcResults').html('<p>Inputs must contain numbers.<hr /></p>')
       } else {
         if ($('.evoTransfer').is(':checked') && $('.luckyEgg').is(':checked')) {
-          pokeCalc(evolvePokemon, evolveCandies, evolveBy, true, true);
+          pidgeyCalc(evolvePokemon, evolveCandies, evolveNum, true);
       } else if ($('.evoTransfer').is(':checked') === true && $('.luckyEgg').is(':checked') === false) {
-          pokeCalc(evolvePokemon, evolveCandies, evolveBy, true, false);
+          pidgeyCalc(evolvePokemon, evolveCandies, evolveNum, false);
       } else if ($('.evoTransfer').is(':checked') === false && $('.luckyEgg').is(':checked') === true) {
-        pokeCalc(evolvePokemon, evolveCandies, evolveBy, false, true)
+         $('.calcResults').html('<p>Sorry still working on this feature!</p><hr />')
+      } else if ($('.evoTransfer').is(':checked') === false && $('.luckyEgg').is(':checked') === false) {
+         $('.calcResults').html('<p>Sorry still working on this feature!</p><hr />')
       }
     }
+    return false;
     })
     $('.evolveCalc').append('<div class=calcResults><hr /></div>')
 
@@ -48,10 +54,9 @@
          $('.howManyResult').html('<p>Inputs must contain numbers.</p><hr />')
     } else {
       if ($('.howTransfer').is(':checked')) {
-        console.log('checked')
-      pidgeyCalc($('.howCandy').val(), $('.howGoal').val(), true)
+      howMany($('.howCandy').val(), $('.howGoal').val(), true)
       } else {
-      pidgeyCalc($('.howCandy').val(), $('.howGoal').val(), false)
+      howMany($('.howCandy').val(), $('.howGoal').val(), false)
     }
       return false
     }
@@ -61,7 +66,7 @@
     //$('.howManyResult').append('<p>Results Here</p>')
 
 
-
+    $('.container').append('<p>Created by: <a href="https://github.com/Hughes89">Mike Hughes<a></p>')
       })
   </script>
 </body>
