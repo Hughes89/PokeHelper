@@ -29,12 +29,13 @@ function pidgeyCalc(poke, candy, evolveNum, luckyEgg, transferring) {
         }
         return $('.calcResults').html('<p>You will get <b>500 XP</b>.</p><hr>');
     }
-    if (poke + candy < evolveNum) {
+    if (poke + candy < evolveNum + 1) {
         return $('.calcResults').html('<p>You will get <b>0 XP</b></p><hr>');
     }
     if (poke === 1 && candy < evolveNum) {
         return $('.calcResults').html('<p>You will get <b>0 XP</b></p><hr>');
     }
+    if (candy + poke > evolveNum) {
     var evolve = 0;
     var transfer = 0;
     var transferCandy = 0;
@@ -97,4 +98,5 @@ function pidgeyCalc(poke, candy, evolveNum, luckyEgg, transferring) {
             }
         }
     }
+}
 }
