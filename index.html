@@ -18,7 +18,7 @@
 
 
     //Evolve Cal div start
-    $('.container').append('<div class=evolveCalc><span class=titles><p><hr /><h2>E</h2> v o l u t i o n&nbsp;&nbsp;&nbsp;&nbsp;X P&nbsp;&nbsp;&nbsp;&nbsp;C a l c u l a t o r</p></span></div>');
+    $('.container').append('<div class=evolveCalc><span class=titles><p><hr /><h2>E</h2> v o l u t i o n&nbsp;&nbsp;&nbsp;&nbsp;X P&nbsp;&nbsp;&nbsp;&nbsp;C a l c u l a t o r <img src="./pokeSprites/' + Math.floor((Math.random() * 150) +1) + '.png" /></p></span></div>');
     //Evolve calc inputs
     $('.evolveCalc').append('<div evolveInput>Pokemon Count: <input class="evolvePoke" type="number" placeholder="0"> Candy Count:  <input class="evolveCandy" type="number" placeholder="0" ><br />How many candy per evolve:&nbsp;&nbsp;&nbsp;<input name="evolveNum" type="radio" value="12">12&nbsp;&nbsp;&nbsp;</input><input name="evolveNum" type="radio" value="25">25&nbsp;&nbsp;&nbsp;</input><input name="evolveNum" type="radio" value="50">50&nbsp;&nbsp;&nbsp;</input><input name="evolveNum" type="radio" value="100">100</input><br> Transfer as you catch? <input class="evoTransfer" type="checkbox"> Lucky Egg? <input class="luckyEgg" type="checkbox" /> <br> <input type="submit" class="evolveSubmit"></div>')
     $('.evolveSubmit').on('click', function () {
@@ -45,7 +45,7 @@
 
 
     //How Many div start
-    $('.container').append('<div class=howMany><span class=titles><p><h2>H</h2> o w&nbsp;&nbsp;&nbsp;&nbsp;m a n y&nbsp;&nbsp;&nbsp;&nbsp;d o&nbsp;&nbsp;&nbsp;&nbsp;y o u&nbsp;&nbsp;&nbsp;&nbsp;n e e d&nbsp;&nbsp;&nbsp;&nbsp;t o&nbsp;&nbsp;&nbsp;&nbsp;c a t c h ?<h2></span></p></div>');
+    $('.container').append('<div class=howMany><span class=titles><p><h2>H</h2> o w&nbsp;&nbsp;&nbsp;&nbsp;m a n y&nbsp;&nbsp;&nbsp;&nbsp;d o&nbsp;&nbsp;&nbsp;&nbsp;y o u&nbsp;&nbsp;&nbsp;&nbsp;n e e d&nbsp;&nbsp;&nbsp;&nbsp;t o&nbsp;&nbsp;&nbsp;&nbsp;c a t c h ?<h2></span><img src="./pokeSprites/' + Math.floor((Math.random() * 150) +1) + '.png" /></p></div>');
     $('.howMany').append('<div class=howManyInputs></div>');
     //How Many Inputs
     $('.howManyInputs').append('Candy goal: <input class="howGoal" type="number" placeholder="0">  Current candy count:  <input class="howCandy" type="number" placeholder="0" > <br> Transfer as you catch? <input class="howTransfer" type="checkbox"> <br> <input type="submit" class="howSubmit">')
