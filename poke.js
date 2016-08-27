@@ -19,45 +19,36 @@ function howMany(current, goal, transfer) {
     return $('.howManyResult').html('<p>You only have to catch ' + finalGoal + ' more pokemon!</p><hr>');
 }
 
-
-function pokeCalc(pokemon, candies, evolveBy, transfer, luckyEgg) {
-    var transferCount = 0;
-    var evolveTrans = 0;
-    var evolveCount = 0;
-    var evolving = true;
-    if (transfer) {
-        while (pokemon > evolveBy + 1) {
-            pokemon--;
-            transferCount++;
-        }
-        candies = candies + transferCount;
-        while (candies >= evolveBy) {
-            candies = candies - evolveBy;
-            pokemon--;
-            evolveCount++;
-            candies = candies + 2;
-            if (pokemon < 0) {
-                candies--;
-                pokemon++;
-                transferCount--;
-                if (transferCount < 0) {
-                    pokemon++;
-                    candies--;
-                    evolveCount--;
-                    transferCount++;
-                }
-            }
-            while (pokemon > 1 && candies < evolveBy) {
-                pokemon--;
-                candies++;
-            }
-            console.log(pokemon, candies);
-        }
+function pidgeyCalc(poke, candy, evolveNum, luckyEgg) {
+  var evolve = 0;
+  var transfer = 0;
+  var transferCandy = 0;
+  while (candy > evolveNum) {
+    candy = candy - 12;
+    poke--;
+    evolve++;
+    candy = candy + 2;
+  }
+  if (poke + candy > evolveNum) {
+    while (candy < 13) {
+      poke--;
+      candy++;
+      transfer++;
+      if(poke + candy < 13) {
+      transfer--;
+      poke++;
+      if(luckyEgg) {
+      	return $('.calcResults').html('<p>Transfer ' + transfer + ' before using your egg.</p><p>You will get ' + evolve * 500 * 2 + ' XP.</p><hr>');
+      } else {
+      	return $('.calcResults').html('<p>You will get ' + evolve * 500 + ' XP.</p><hr>');
+      }
+      }
+      if (candy === 12 && poke >= 1) {
+        poke--;
+        evolve++;
+        candy = 0;
+        candy = candy + 2;
+      }
     }
-
-    console.log(pokemon, candies, evolveCount, transferCount);
-    if (luckyEgg) {
-        return $('.calcResults').html('<p>You will get ' + evolveCount * 500 * 2 + ' XP.</p><hr>');
-    }
-    return $('.calcResults').html('<p>You will get ' + evolveCount * 500 + ' XP.</p><hr>');
+  }
 }
