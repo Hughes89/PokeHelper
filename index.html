@@ -25,7 +25,6 @@
       var evolvePokemon = parseFloat($('.evolvePoke').val());
       var evolveCandies = parseFloat($('.evolveCandy').val());
       var evolveNum = parseFloat($('input:radio[name=evolveNum]:checked').val())
-      console.log(evolveNum, evolvePokemon, evolveCandies)
       if ($('.evolvePoke').val() === '' || $('.evolveCandy').val() === '') {
         $('.calcResults').html('<p>Inputs must contain numbers.<hr /></p>')
       } else {
